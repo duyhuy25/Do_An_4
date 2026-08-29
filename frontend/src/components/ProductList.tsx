@@ -8,7 +8,7 @@ interface Props {
 
 export default function ProductList({ products }: Props): JSX.Element {
   if (!products || products.length === 0) {
-    return <p>Không có sản phẩm hoặc không thể kết nối backend.</p>
+    return <p>Không có báo cáo đồ thất lạc hoặc không thể kết nối backend.</p>
   }
 
   return (
