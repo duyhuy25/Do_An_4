@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// @ts-expect-error CSS imports are not declared in this project setup
+// @ts-expect-error Nhập CSS chưa được khai báo trong cài đặt project
 import './styles.css';
 import { Navbar } from './components/Navbar';
 import { UserPortal } from './components/UserPortal';
@@ -31,7 +31,7 @@ export function App() {
   });
   const [showAuthModal, setShowAuthModal] = useState(false);
 
-  // Core Data States
+  // Trạng thái dữ liệu chính
   const [categories, setCategories] = useState<Category[]>([]);
   const [locations, setLocations] = useState<Location[]>([]);
   const [storageLocations, setStorageLocations] = useState<StorageLocation[]>([]);
@@ -51,7 +51,7 @@ export function App() {
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [userReports, setUserReports] = useState<UserReport[]>([]);
 
-  // Fetch initial data
+  // Tải dữ liệu ban đầu
   const fetchData = async () => {
     try {
       const [
@@ -97,7 +97,7 @@ export function App() {
     fetchData();
   }, []);
 
-  // Sync current user to localStorage
+  // Đồng bộ người dùng hiện tại vào localStorage
   const handleLoginSuccess = (user: User) => {
     setCurrentUser(user);
     localStorage.setItem('lost_found_user', JSON.stringify(user));
@@ -109,7 +109,7 @@ export function App() {
     setCurrentPortal('user');
   };
 
-  // Guard Admin Portal Access
+  // Bảo vệ truy cập cổng quản trị
   const isAdminOrStaff = currentUser && (currentUser.RoleName === 'Admin' || currentUser.RoleName === 'Staff' || currentUser.RoleID === 3 || currentUser.RoleID === 2);
 
   const handlePortalSwitch = (portal: 'user' | 'admin') => {
@@ -120,7 +120,7 @@ export function App() {
     setCurrentPortal(portal);
   };
 
-  // Handlers for User Actions
+  // Xử lý hành động của người dùng
   const handleAddLostReport = async (data: any) => {
     try {
       const { images = [], ...report } = data;
@@ -172,7 +172,7 @@ export function App() {
     }
   };
 
-  // Handlers for Admin Actions
+  // Xử lý hành động quản trị
   const handleApproveLostReport = async (id: number, status: 'APPROVED' | 'REJECTED') => {
     try {
       const res = await fetch(`${API_BASE}/lost-reports/${id}/status`, {
