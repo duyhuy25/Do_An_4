@@ -29,15 +29,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Search size={22} />
           </div>
           <div>
-            <span>Campus Lost & Found</span>
+            <span>Campus Lost & Found UTEHY</span>
             <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 500 }}>
-              Hệ thống Quản lý Đồ Thất Lạc (Do_An_4)
+              Hệ thống Quản lý Đồ Thất Lạc
             </div>
           </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          {/* Switcher only visible if Admin or Staff */}
           {isAdminOrStaff && (
             <div className="portal-switcher">
               <button
@@ -62,7 +61,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           )}
 
-          {/* Account Profile / Auth status */}
           {currentUser ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <div style={{ textAlign: 'right' }}>

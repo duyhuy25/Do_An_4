@@ -69,7 +69,9 @@ export function App() {
         fetch(`${API_BASE}/categories`),
         fetch(`${API_BASE}/locations`),
         fetch(`${API_BASE}/storage-locations`),
-        fetch(`${API_BASE}/lost-reports`),
+        fetch(`${API_BASE}/lost-reports`, {
+          headers: currentUser?.AccessToken ? { Authorization: `Bearer ${currentUser.AccessToken}` } : undefined
+        }),
         fetch(`${API_BASE}/items`),
         fetch(`${API_BASE}/claims`),
         fetch(`${API_BASE}/match-suggestions`),
@@ -95,7 +97,7 @@ export function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentUser]);
 
   // Đồng bộ người dùng hiện tại vào localStorage
   const handleLoginSuccess = (user: User) => {
