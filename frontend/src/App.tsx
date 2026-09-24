@@ -31,7 +31,6 @@ export function App() {
   });
   const [showAuthModal, setShowAuthModal] = useState(false);
 
-  // Trạng thái dữ liệu chính
   const [categories, setCategories] = useState<Category[]>([]);
   const [locations, setLocations] = useState<Location[]>([]);
   const [storageLocations, setStorageLocations] = useState<StorageLocation[]>([]);
@@ -252,7 +251,6 @@ export function App() {
 
   return (
     <div className="app-root">
-      {/* PHẦN 1: HEAD (Thanh điều hướng Navbar) */}
       <Navbar
         currentPortal={currentPortal}
         onPortalChange={handlePortalSwitch}
@@ -262,10 +260,8 @@ export function App() {
         onLogout={handleLogout}
       />
 
-      {/* KHU VỰC BỐ CỤC CHÍNH (CONTENT + THÔNG TIN NGOÀI LỀ) */}
       <div className="page-container" style={{ minHeight: 'calc(100vh - 120px)' }}>
         <div className="main-layout-container">
-          {/* PHẦN 2: CONTENT (Nội dung ứng dụng chính) */}
           <main className="main-content">
             {currentPortal === 'user' || !isAdminOrStaff ? (
               <UserPortal
@@ -303,7 +299,6 @@ export function App() {
           </main>
         </div>
 
-        {/* PHẦN 3: THÔNG TIN NGOÀI LỀ (đặt ngay dưới main-layout-container) */}
         <aside className="extra-info-sidebar">
           <ExtraInfoPanel />
         </aside>

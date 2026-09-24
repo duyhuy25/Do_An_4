@@ -52,7 +52,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
     }
   };
 
-  // Filter lost reports
+  // Lọc bài báo mất
   const filteredLost = lostReports.filter((r) => {
     const matchesSearch =
       r.Title.toLowerCase().includes(search.toLowerCase()) ||
@@ -63,7 +63,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
     return matchesSearch && matchesCategory && matchesLocation;
   });
 
-  // Filter found items
+  // Lọc vật phẩm đã nhặt
   const filteredItems = items.filter((i) => {
     const matchesSearch =
       i.ItemName.toLowerCase().includes(search.toLowerCase()) ||
@@ -77,7 +77,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
 
   return (
     <div className="page-container">
-      {/* Banner */}
+      {/* Phần banner */}
       <div className="hero-banner">
         <div className="hero-content">
           <h1>Hệ Thống Tìm & Báo Đồ Thất Lạc Trường Học</h1>
@@ -101,7 +101,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </div>
       </div>
 
-      {/* Filter Card */}
+      {/* Thẻ lọc */}
       <div className="filter-card">
         <div className="search-input-group">
           <Search size={18} />
@@ -141,7 +141,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </select>
       </div>
 
-      {/* Tab Navigation */}
+      {/* Thanh điều hướng tab */}
       <div className="tabs-header">
         <button
           className={`tab-item ${activeTab === 'lost' ? 'active' : ''}`}
@@ -177,7 +177,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </button>
       </div>
 
-      {/* TAB 1: LOST REPORTS */}
+      {/* TAB 1: BÁO MẤT */}
       {activeTab === 'lost' && (
         <>
           {filteredLost.length === 0 ? (
@@ -241,7 +241,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </>
       )}
 
-      {/* TAB 2: FOUND ITEMS IN STORAGE */}
+      {/* TAB 2: ĐỒ ĐÃ NHẶT & LƯU KHO */}
       {activeTab === 'found' && (
         <>
           {filteredItems.length === 0 ? (
@@ -315,7 +315,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </>
       )}
 
-      {/* TAB 3: AUTOMATIC MATCH SUGGESTIONS */}
+      {/* TAB 3: GỢI Ý TRÙNG KHỚP TỰ ĐỘNG */}
       {activeTab === 'matches' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {matchSuggestions.map((m) => (
@@ -361,7 +361,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </div>
       )}
 
-      {/* TAB 4: MY CLAIMS */}
+      {/* TAB 4: YÊU CẦU CỦA TÔI */}
       {activeTab === 'my-claims' && (
         <div className="data-table-container">
           {!currentUser ? (
@@ -411,7 +411,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         </div>
       )}
 
-      {/* MODALS */}
+      {/* CÁC MODAL */}
       {showLostModal && (
         <ReportLostModal
           categories={categories}
@@ -448,7 +448,7 @@ export const UserPortal: React.FC<UserPortalProps> = ({
         />
       )}
 
-      {/* Detail Viewer */}
+      {/* Trình xem chi tiết */}
       {selectedDetail && (
         <div className="modal-overlay">
           <div className="modal-card">

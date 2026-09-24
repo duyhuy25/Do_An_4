@@ -1,13 +1,19 @@
+export interface Role {
+  RoleID: number;
+  RoleName: string;
+  Description?: string;
+}
+
 export interface User {
   UserID: number;
   RoleID: number;
   FullName: string;
   Email: string;
-  RoleName: string;
+  Password?: string;
   Phone?: string;
   StudentCode?: string | null;
+  RoleName: string;
   ClassName?: string;
-  AccessToken?: string;
 }
 
 export interface Category {
@@ -39,7 +45,7 @@ export interface LostReport {
   UserPhone?: string;
   CategoryID: number;
   CategoryName: string;
-  LocationID?: number;
+  LocationID?: number | null;
   LocationName?: string;
   Title: string;
   Description?: string;
@@ -47,8 +53,8 @@ export interface LostReport {
   DistinguishingFeatures?: string;
   RewardAmount?: number;
   Status: 'PENDING' | 'APPROVED' | 'REJECTED' | 'FOUND' | 'CLOSED';
-  ApprovedBy?: number;
-  ApprovedAt?: string;
+  ApprovedBy?: number | null;
+  ApprovedAt?: string | null;
   ImageURL?: string;
   CreatedAt: string;
 }
@@ -57,7 +63,7 @@ export interface Item {
   ItemID: number;
   CategoryID: number;
   CategoryName: string;
-  LocationID?: number;
+  LocationID?: number | null;
   LocationName?: string;
   ItemName: string;
   Description?: string;
@@ -67,7 +73,6 @@ export interface Item {
   StorageLocationID?: number;
   StorageName?: string;
   TrackingCode: string;
-  ReceivedAt?: string;
   ReceivedBy?: number;
   ReturnedAt?: string;
   ImageURL?: string;
@@ -86,8 +91,8 @@ export interface Claim {
   OwnershipEvidence?: string;
   Status: 'PENDING' | 'VERIFYING' | 'APPROVED' | 'REJECTED' | 'CANCELLED';
   SubmittedAt: string;
-  ReviewedBy?: number;
-  ReviewedAt?: string;
+  ReviewedBy?: number | null;
+  ReviewedAt?: string | null;
   RejectionReason?: string;
 }
 
@@ -103,14 +108,14 @@ export interface MatchSuggestion {
   CreatedAt: string;
 }
 
-export interface AdminStats {
-  totalLost: number;
-  pendingLost: number;
-  totalItems: number;
-  storedItems: number;
-  returnedItems: number;
-  pendingClaims: number;
-  totalUsers: number;
+export interface UserReport {
+  ReportID: number;
+  ReportedByUserID: number;
+  ReportedByName: string;
+  TargetTitle: string;
+  Reason: string;
+  Status: 'PENDING' | 'PROCESSING' | 'RESOLVED' | 'REJECTED';
+  CreatedAt: string;
 }
 
 export interface AuditLog {
@@ -120,15 +125,5 @@ export interface AuditLog {
   EntityID: number;
   UserID: number;
   Details: string;
-  CreatedAt: string;
-}
-
-export interface UserReport {
-  ReportID: number;
-  ReportedByUserID: number;
-  ReportedByName: string;
-  TargetTitle: string;
-  Reason: string;
-  Status: 'PENDING' | 'PROCESSING' | 'RESOLVED' | 'REJECTED';
   CreatedAt: string;
 }
